@@ -87,8 +87,8 @@ const copy = {
     proofRecord: 'Örnek teslimat kaydı',
     proofVerified: 'Kurum onaylı',
     proofDemo: 'Demo içerik',
-    proofPhotoAlt: 'Bağış kutusu ve yeniden kullanıma hazırlanan ahşap oyuncaklar',
-    proofPhotoCaption: 'Kurum tarafından paylaşılan örnek teslimat fotoğrafı',
+    proofPhotoAlt: 'Bağışlanan ahşap oyuncağına sarılan mutlu bir çocuk, temsili görsel',
+    proofPhotoCaption: 'Temsili demo görsel · Gerçek bir teslimat kaydı değildir',
     proofInstitutionLabel: 'Teslim alan kurum',
     proofInstitution: 'Umut Çocuk Destek Merkezi',
     proofLocation: 'İstanbul · Ümraniye',
@@ -172,8 +172,8 @@ const copy = {
     proofRecord: 'Sample delivery record',
     proofVerified: 'Institution verified',
     proofDemo: 'Demo content',
-    proofPhotoAlt: 'Donation box and wooden toys prepared for reuse',
-    proofPhotoCaption: 'Sample delivery photo shared by the institution',
+    proofPhotoAlt: 'A happy child hugging a donated wooden toy, illustrative image',
+    proofPhotoCaption: 'Illustrative demo image · Not an actual delivery record',
     proofInstitutionLabel: 'Receiving institution',
     proofInstitution: 'Hope Child Support Center',
     proofLocation: 'Istanbul · Ümraniye',
@@ -329,7 +329,7 @@ export default function Home() {
             <div><span className="proof-demo-tag">{c.proofDemo}</span><span className="proof-verified"><BadgeCheck />{c.proofVerified}</span></div>
           </div>
           <figure className="proof-photo">
-            <img src="/hero-cover-v2.png" alt={c.proofPhotoAlt} />
+            <img src="/delivery-record-demo-v2.png" alt={c.proofPhotoAlt} />
             <figcaption>{c.proofPhotoCaption}</figcaption>
           </figure>
           <div className="proof-details">
