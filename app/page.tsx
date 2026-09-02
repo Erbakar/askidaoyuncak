@@ -3,11 +3,14 @@
 import {
   ArrowRight,
   BadgeCheck,
+  Building2,
   Box,
   Check,
   Heart,
   HandHeart,
+  Image as ImageIcon,
   Menu,
+  MailCheck,
   Recycle,
   ShieldCheck,
   Sparkles,
@@ -45,6 +48,7 @@ const copy = {
       ['02', 'Temizle', 'Her oyuncağı malzemesine uygun şekilde dezenfekte edelim.'],
       ['03', 'Onar', 'Mümkün olan küçük eksikleri ve hasarları güvenle giderelim.'],
       ['04', 'Buluştur', 'Hazır olan oyuncakları ihtiyaç sahibi çocuklara ulaştıralım.'],
+      ['05', 'Belgele', 'Teslim alan kurumdan gelen fotoğrafı ve kurum bilgisini bağışçıyla paylaşalım.'],
     ],
     storyEyebrow: 'Bir sosyal sorumluluk projesi',
     storyTitle: 'Fazlalığı azaltırken mutluluğu çoğaltıyoruz.',
@@ -73,7 +77,17 @@ const copy = {
     successTitle: 'Harika, iyilik yola çıktı!',
     successText: 'Talebinizi aldık. Teslimat detayları için sizinle iletişime geçeceğiz.',
     again: 'Yeni talep oluştur',
-    privacy: 'Bilgileriniz yalnızca oyuncak bağışı sürecini yürütmek için kullanılır.',
+    privacy: 'Bilgileriniz bağış sürecini yürütmek ve teslimat fotoğrafını size iletmek için kullanılır.',
+    proofEyebrow: 'Teslimat sonrası şeffaflık',
+    proofTitle: 'Oyuncağınızın yeni hikâyesini görün.',
+    proofText: 'Oyuncak teslim edildiğinde, ilgili kurumdan gelen teslimat fotoğrafını ve kurum bilgisini bağışçıya iletiyoruz. Paylaşım izni bulunan fotoğrafları da çocukların mahremiyetini koruyarak burada yayımlıyoruz.',
+    proofItems: ['Teslim alan kurumun bilgisi', 'Kurum tarafından gönderilen teslimat fotoğrafı', 'Bağışçıya doğrudan bilgilendirme'],
+    proofRecord: 'Teslimat kaydı',
+    proofVerified: 'Kurum onaylı',
+    proofEmptyTitle: 'İlk teslimat fotoğrafları burada yayımlanacak',
+    proofEmptyText: 'Kurum onayı ve mahremiyet kontrolünün ardından.',
+    proofSentLabel: 'Bağışçıya iletilir',
+    proofSentValue: 'Fotoğraf ve kurum bilgisi',
     faqEyebrow: 'Merak edilenler',
     faqTitle: 'Sık sorulan sorular',
     faqs: [
@@ -81,6 +95,7 @@ const copy = {
       ['Oyuncaklar nasıl dezenfekte ediliyor?', 'Oyuncağın malzemesine uygun temizlik ve dezenfeksiyon yöntemi uygulanır. Güvenle temizlenemeyen ürünler dağıtıma alınmaz.'],
       ['Oyuncakların kime ulaştığını görebilir miyim?', 'Çocukların mahremiyetini koruyarak projenin toplam etkisini ve sahadan hikâyeleri düzenli olarak paylaşmayı hedefliyoruz.'],
       ['Kurum olarak destek olabilir miyiz?', 'Evet. Toplama noktası, lojistik, bakım-onarım veya kurumsal gönüllülük desteği için bizimle iletişime geçebilirsiniz.'],
+      ['Teslimat fotoğrafları nasıl paylaşılıyor?', 'Kurumdan gelen fotoğraf önce mahremiyet açısından kontrol edilir. Bağışçıya kurum bilgisiyle birlikte doğrudan gönderilir; yalnızca paylaşım izni bulunan ve kişisel bilgi içermeyen fotoğraflar web sitesinde yayımlanır.'],
     ],
     footerText: 'Her çocuğun oyun hakkına, her oyuncağın ikinci bir hikâyeye sahip olduğuna inanıyoruz.',
     footerNav: ['Bağış Yap', 'Kabul Kriterleri', 'Kurumsal Destek', 'İletişim'],
@@ -109,6 +124,7 @@ const copy = {
       ['02', 'Clean', 'We disinfect every toy with a material-safe method.'],
       ['03', 'Repair', 'Where possible, we safely fix small faults and missing parts.'],
       ['04', 'Match', 'We deliver ready toys to children who need them.'],
+      ['05', 'Document', 'We share the receiving institution’s photo and delivery information with the donor.'],
     ],
     storyEyebrow: 'A social responsibility project',
     storyTitle: 'We reduce excess and multiply joy.',
@@ -137,7 +153,17 @@ const copy = {
     successTitle: 'Wonderful—kindness is on its way!',
     successText: 'We received your request. We will contact you with delivery details.',
     again: 'Create another request',
-    privacy: 'Your details are used only to coordinate your toy donation.',
+    privacy: 'Your details are used to coordinate the donation and send you the delivery photo.',
+    proofEyebrow: 'Transparency after delivery',
+    proofTitle: 'See the next chapter of your toy’s story.',
+    proofText: 'Once a toy is delivered, we send the donor the receiving institution’s delivery photo and details. With permission, selected photos are also published here while protecting children’s privacy.',
+    proofItems: ['Receiving institution details', 'Delivery photo provided by the institution', 'A direct update sent to the donor'],
+    proofRecord: 'Delivery record',
+    proofVerified: 'Institution verified',
+    proofEmptyTitle: 'The first delivery photos will appear here',
+    proofEmptyText: 'After institutional approval and a privacy check.',
+    proofSentLabel: 'Sent to the donor',
+    proofSentValue: 'Photo and institution details',
     faqEyebrow: 'Good to know',
     faqTitle: 'Frequently asked questions',
     faqs: [
@@ -145,6 +171,7 @@ const copy = {
       ['How are toys disinfected?', 'We use a cleaning and disinfection method suited to each material. Items that cannot be cleaned safely are not distributed.'],
       ['Can I see who receives the toys?', 'While protecting children’s privacy, we aim to share the project’s overall impact and stories from the field regularly.'],
       ['Can our organization support the project?', 'Yes. Contact us to support collection points, logistics, repair, or corporate volunteering.'],
+      ['How are delivery photos shared?', 'Photos received from institutions are checked for privacy first. The donor receives the photo with institution details; only approved photos without personal information are published on the website.'],
     ],
     footerText: 'We believe every child has the right to play and every toy deserves a second story.',
     footerNav: ['Donate', 'Acceptance Criteria', 'Partner With Us', 'Contact'],
@@ -269,6 +296,25 @@ export default function Home() {
           {c.impactCards.map((card, index) => { const Icon = impactIcons[index]; return <article key={card[0]}><Icon aria-hidden="true" /><h3>{card[0]}</h3><p>{card[1]}</p></article>; })}
         </div>
         <div className="standards-card"><div className="standards-icon"><ShieldCheck aria-hidden="true" /></div><div><h3>{c.standardsTitle}</h3><p>{c.standardsText}</p></div><a href="#sss">{c.standardsLink} <ArrowRight /></a></div>
+      </section>
+
+      <section className="proof-section section-pad" id="yeni-hikayeler">
+        <div className="proof-copy">
+          <p className="eyebrow"><span /> {c.proofEyebrow}</p>
+          <h2>{c.proofTitle}</h2>
+          <p className="proof-lede">{c.proofText}</p>
+          <ul>
+            {c.proofItems.map((item, index) => {
+              const Icon = index === 0 ? Building2 : index === 1 ? ImageIcon : MailCheck;
+              return <li key={item}><Icon aria-hidden="true" /><span>{item}</span></li>;
+            })}
+          </ul>
+        </div>
+        <div className="proof-record">
+          <div className="proof-record-head"><strong>{c.proofRecord}</strong><span><BadgeCheck />{c.proofVerified}</span></div>
+          <div className="proof-photo-empty"><ImageIcon aria-hidden="true" /><strong>{c.proofEmptyTitle}</strong><p>{c.proofEmptyText}</p></div>
+          <div className="proof-record-meta"><div><small>{c.proofSentLabel}</small><strong>{c.proofSentValue}</strong></div><MailCheck aria-hidden="true" /></div>
+        </div>
       </section>
 
       <section className="donation-section section-pad" id="bagis">
