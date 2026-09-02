@@ -5,12 +5,14 @@ import {
   BadgeCheck,
   Building2,
   Box,
+  CalendarDays,
   Check,
   Heart,
   HandHeart,
   Image as ImageIcon,
   Menu,
   MailCheck,
+  MapPin,
   ShieldCheck,
   Sparkles,
   ToyBrick,
@@ -82,12 +84,19 @@ const copy = {
     proofTitle: 'Oyuncağınızın yeni hikâyesini görün.',
     proofText: 'Oyuncak teslim edildiğinde, ilgili kurumdan gelen teslimat fotoğrafını ve kurum bilgisini bağışçıya iletiyoruz. Paylaşım izni bulunan fotoğrafları da çocukların mahremiyetini koruyarak burada yayımlıyoruz.',
     proofItems: ['Teslim alan kurumun bilgisi', 'Kurum tarafından gönderilen teslimat fotoğrafı', 'Bağışçıya doğrudan bilgilendirme'],
-    proofRecord: 'Teslimat kaydı',
+    proofRecord: 'Örnek teslimat kaydı',
     proofVerified: 'Kurum onaylı',
-    proofEmptyTitle: 'İlk teslimat fotoğrafları burada yayımlanacak',
-    proofEmptyText: 'Kurum onayı ve mahremiyet kontrolünün ardından.',
-    proofSentLabel: 'Bağışçıya iletilir',
-    proofSentValue: 'Fotoğraf ve kurum bilgisi',
+    proofDemo: 'Demo içerik',
+    proofPhotoAlt: 'Bağış kutusu ve yeniden kullanıma hazırlanan ahşap oyuncaklar',
+    proofPhotoCaption: 'Kurum tarafından paylaşılan örnek teslimat fotoğrafı',
+    proofInstitutionLabel: 'Teslim alan kurum',
+    proofInstitution: 'Umut Çocuk Destek Merkezi',
+    proofLocation: 'İstanbul · Ümraniye',
+    proofDateLabel: 'Teslim tarihi',
+    proofDate: '24 Ağustos 2026',
+    proofPackage: '18 oyuncak · 7 oyun seti',
+    proofSentLabel: 'Bağışçı bilgilendirmesi',
+    proofSentValue: 'Fotoğraf ve kurum bilgisi iletildi',
     faqEyebrow: 'Merak edilenler',
     faqTitle: 'Sık sorulan sorular',
     faqs: [
@@ -160,12 +169,19 @@ const copy = {
     proofTitle: 'See the next chapter of your toy’s story.',
     proofText: 'Once a toy is delivered, we send the donor the receiving institution’s delivery photo and details. With permission, selected photos are also published here while protecting children’s privacy.',
     proofItems: ['Receiving institution details', 'Delivery photo provided by the institution', 'A direct update sent to the donor'],
-    proofRecord: 'Delivery record',
+    proofRecord: 'Sample delivery record',
     proofVerified: 'Institution verified',
-    proofEmptyTitle: 'The first delivery photos will appear here',
-    proofEmptyText: 'After institutional approval and a privacy check.',
-    proofSentLabel: 'Sent to the donor',
-    proofSentValue: 'Photo and institution details',
+    proofDemo: 'Demo content',
+    proofPhotoAlt: 'Donation box and wooden toys prepared for reuse',
+    proofPhotoCaption: 'Sample delivery photo shared by the institution',
+    proofInstitutionLabel: 'Receiving institution',
+    proofInstitution: 'Hope Child Support Center',
+    proofLocation: 'Istanbul · Ümraniye',
+    proofDateLabel: 'Delivery date',
+    proofDate: '24 August 2026',
+    proofPackage: '18 toys · 7 play sets',
+    proofSentLabel: 'Donor update',
+    proofSentValue: 'Photo and institution details sent',
     faqEyebrow: 'Good to know',
     faqTitle: 'Frequently asked questions',
     faqs: [
@@ -308,8 +324,18 @@ export default function Home() {
           </ul>
         </div>
         <div className="proof-record">
-          <div className="proof-record-head"><strong>{c.proofRecord}</strong><span><BadgeCheck />{c.proofVerified}</span></div>
-          <div className="proof-photo-empty"><ImageIcon aria-hidden="true" /><strong>{c.proofEmptyTitle}</strong><p>{c.proofEmptyText}</p></div>
+          <div className="proof-record-head">
+            <strong>{c.proofRecord}</strong>
+            <div><span className="proof-demo-tag">{c.proofDemo}</span><span className="proof-verified"><BadgeCheck />{c.proofVerified}</span></div>
+          </div>
+          <figure className="proof-photo">
+            <img src="/hero-cover-v2.png" alt={c.proofPhotoAlt} />
+            <figcaption>{c.proofPhotoCaption}</figcaption>
+          </figure>
+          <div className="proof-details">
+            <div className="proof-detail proof-detail-wide"><Building2 aria-hidden="true" /><div><small>{c.proofInstitutionLabel}</small><strong>{c.proofInstitution}</strong><span><MapPin aria-hidden="true" />{c.proofLocation}</span></div></div>
+            <div className="proof-detail"><CalendarDays aria-hidden="true" /><div><small>{c.proofDateLabel}</small><strong>{c.proofDate}</strong><span>{c.proofPackage}</span></div></div>
+          </div>
           <div className="proof-record-meta"><div><small>{c.proofSentLabel}</small><strong>{c.proofSentValue}</strong></div><MailCheck aria-hidden="true" /></div>
         </div>
       </section>
