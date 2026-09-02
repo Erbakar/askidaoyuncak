@@ -2,15 +2,18 @@
 
 import {
   ArrowRight,
+  BadgeCheck,
   Box,
   Check,
   Heart,
+  HandHeart,
   Menu,
   PackageCheck,
   Recycle,
   Send,
   ShieldCheck,
   Sparkles,
+  ToyBrick,
   Wrench,
   X,
 } from 'lucide-react';
@@ -27,9 +30,9 @@ const copy = {
     nav: ['Nasıl çalışır?', 'Hikâyemiz', 'Etki'],
     send: 'Oyuncak gönder',
     eyebrow: 'Döngüsel iyilik hareketi',
-    titleA: 'Sevilen oyuncaklar',
-    titleB: 'yeniden',
-    titleC: 'sevilsin.',
+    titleA: 'Oyuncaklara ikinci hayat,',
+    titleB: 'çocuklara',
+    titleC: ' yeni mutluluklar.',
     lede: 'Kullanılmayan oyuncakları topluyor, özenle temizliyor, gerekiyorsa onarıyor ve yeni oyun arkadaşlarıyla buluşturuyoruz.',
     primary: 'Bir oyuncağa yeni hayat ver',
     secondary: 'Nasıl çalıştığını gör',
@@ -91,9 +94,9 @@ const copy = {
     nav: ['How it works', 'Our story', 'Impact'],
     send: 'Send a toy',
     eyebrow: 'A circular movement of kindness',
-    titleA: 'Let loved toys be loved',
-    titleB: 'again',
-    titleC: '.',
+    titleA: 'A second life for toys,',
+    titleB: 'new joy',
+    titleC: ' for children.',
     lede: 'We collect unused toys, clean them with care, repair them when needed, and match them with new playmates.',
     primary: 'Give a toy a new life',
     secondary: 'See how it works',
@@ -154,6 +157,15 @@ const copy = {
 const stepIcons = [Send, Sparkles, Wrench, PackageCheck];
 const impactIcons = [Recycle, Heart, Wrench];
 
+function BrandMark() {
+  return (
+    <span className="brand-symbol" aria-hidden="true">
+      <HandHeart className="brand-hand" />
+      <ToyBrick className="brand-toy" />
+    </span>
+  );
+}
+
 export default function Home() {
   const [language, setLanguage] = useState<'tr' | 'en'>('tr');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -177,8 +189,8 @@ export default function Home() {
 
       <header className="site-header">
         <a className="brand" href="#top" aria-label={`${c.brand} home`}>
-          <span className="brand-mark" aria-hidden="true"><span>●</span><span>▲</span><span>■</span></span>
-          <span className="brand-name">{c.brand}</span>
+          <BrandMark />
+          <span className="brand-lockup"><span className="brand-name">{c.brand}</span><small>{tr ? 'Oyuncağa ikinci bir hayat' : 'A second life for every toy'}</small></span>
         </a>
 
         <nav className="desktop-nav" aria-label={tr ? 'Ana menü' : 'Main menu'}>
@@ -213,14 +225,19 @@ export default function Home() {
             <Button className="primary-cta" size="lg" onClick={goToDonation}>{c.primary} <ArrowRight /></Button>
             <a className="text-link" href="#nasil-calisir">{c.secondary}</a>
           </div>
+          <div className="hero-assurance" aria-label={tr ? 'Güven standartlarımız' : 'Our trust standards'}>
+            <span><BadgeCheck />{tr ? 'Tek tek kontrol' : 'Individually checked'}</span>
+            <span><Sparkles />{tr ? 'Hijyenik temizlik' : 'Hygienic cleaning'}</span>
+            <span><ShieldCheck />{tr ? 'Güvenli teslimat' : 'Safe delivery'}</span>
+          </div>
         </div>
 
         <div className="hero-visual" aria-label={tr ? 'Yeniden kullanıma hazırlanan oyuncaklar' : 'Toys prepared for reuse'}>
           <div className="hero-photo-placeholder">
-            <img src="/og.png" alt={tr ? 'Özenle yenilenmiş ahşap oyuncaklar ve bir oyuncak ayı' : 'Carefully renewed wooden toys and a teddy bear'} />
+            <img src="/og-corporate.png" alt={tr ? 'Kontrolden geçirilmiş oyuncaklar ve güvenli bağış kutusu' : 'Inspected toys and a secure donation box'} />
             <p>{c.prepared}</p>
           </div>
-          <div className="impact-note"><strong>4 {tr ? 'adım' : 'steps'}</strong><span>{c.stepsMini}</span></div>
+          <div className="impact-note"><span className="impact-note-icon"><ShieldCheck /></span><div><strong>{tr ? 'Güvenle yeniden oyunda' : 'Safely back in play'}</strong><span>{c.stepsMini}</span></div></div>
         </div>
       </section>
 
@@ -274,7 +291,7 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <div className="footer-brand"><a className="brand" href="#top"><span className="brand-mark" aria-hidden="true"><span>●</span><span>▲</span><span>■</span></span><span className="brand-name">{c.brand}</span></a><p>{c.footerText}</p></div>
+        <div className="footer-brand"><a className="brand" href="#top"><BrandMark /><span className="brand-lockup"><span className="brand-name">{c.brand}</span><small>{tr ? 'Oyuncağa ikinci bir hayat' : 'A second life for every toy'}</small></span></a><p>{c.footerText}</p></div>
         <nav aria-label={tr ? 'Alt menü' : 'Footer navigation'}>{c.footerNav.map((item, index) => <a key={item} href={index === 0 ? '#bagis' : index === 1 ? '#sss' : '#hikayemiz'}>{item}</a>)}</nav>
         <div className="footer-meta"><span>{c.domain}</span><span>© 2026</span></div>
       </footer>
