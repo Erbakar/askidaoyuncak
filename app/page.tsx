@@ -24,16 +24,16 @@ import { Textarea } from '@/components/ui/textarea';
 
 const copy = {
   tr: {
-    notice: 'Bir oyuncak, yeniden başlayan bir hikâye.',
+    notice: 'İyilik paylaşınca çoğalır, oyuncaklar yeniden oyuna döner.',
     brand: 'askıda oyuncak',
     nav: ['Nasıl çalışır?', 'Hikâyemiz', 'Etki'],
     send: 'Oyuncak gönder',
-    eyebrow: 'Döngüsel iyilik hareketi',
+    eyebrow: 'Sevgiyle yenilenen oyuncaklar',
     titleA: 'Oyuncaklara ikinci hayat,',
     titleB: 'çocuklara',
     titleC: ' yeni mutluluklar.',
-    lede: 'Kullanılmayan oyuncakları topluyor, özenle temizliyor, gerekiyorsa onarıyor ve yeni oyun arkadaşlarıyla buluşturuyoruz.',
-    primary: 'Bir oyuncağa yeni hayat ver',
+    lede: 'Evlerde sessizce bekleyen oyuncakları sevgiyle topluyor, özenle yeniliyor ve yeni oyun arkadaşlarıyla buluşturuyoruz. Çünkü her oyuncak ikinci bir hikâyeyi hak eder.',
+    primary: 'Oyuncağını paylaş',
     secondary: 'Nasıl çalıştığını gör',
     prepared: 'Sevgiyle hazırlanır',
     stepsMini: 'topla · temizle · onar · paylaş',
@@ -102,16 +102,16 @@ const copy = {
     domain: 'askidaoyuncak.org',
   },
   en: {
-    notice: 'One toy, one story beginning again.',
+    notice: 'Kindness grows when shared, and toys return to play.',
     brand: 'provisional toys',
     nav: ['How it works', 'Our story', 'Impact'],
     send: 'Send a toy',
-    eyebrow: 'A circular movement of kindness',
+    eyebrow: 'Toys renewed with love',
     titleA: 'A second life for toys,',
     titleB: 'new joy',
     titleC: ' for children.',
-    lede: 'We collect unused toys, clean them with care, repair them when needed, and match them with new playmates.',
-    primary: 'Give a toy a new life',
+    lede: 'We collect toys waiting quietly at home, renew them with care, and match them with new playmates. Because every toy deserves a second story.',
+    primary: 'Share your toy',
     secondary: 'See how it works',
     prepared: 'Prepared with love',
     stepsMini: 'collect · clean · repair · share',
@@ -241,6 +241,8 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
+        <img className="hero-cover-image" src="/hero-cover-v2.png" alt={tr ? 'Bağışlanmaya hazırlanan oyuncaklar ve bağış kutusu' : 'Toys and a donation box ready to be shared'} />
+        <div className="hero-cover-shade" aria-hidden="true" />
         <div className="hero-copy">
           <p className="eyebrow"><span /> {c.eyebrow}</p>
           <h1>{c.titleA} <em>{c.titleB}</em>{c.titleC}</h1>
@@ -254,14 +256,6 @@ export default function Home() {
             <span><Sparkles />{tr ? 'Hijyenik temizlik' : 'Hygienic cleaning'}</span>
             <span><ShieldCheck />{tr ? 'Güvenli teslimat' : 'Safe delivery'}</span>
           </div>
-        </div>
-
-        <div className="hero-visual" aria-label={tr ? 'Yeniden kullanıma hazırlanan oyuncaklar' : 'Toys prepared for reuse'}>
-          <div className="hero-photo-placeholder">
-            <img src="/og-corporate.png" alt={tr ? 'Kontrolden geçirilmiş oyuncaklar ve güvenli bağış kutusu' : 'Inspected toys and a secure donation box'} />
-            <p>{c.prepared}</p>
-          </div>
-          <div className="impact-note"><span className="impact-note-icon"><ShieldCheck /></span><div><strong>{tr ? 'Güvenle yeniden oyunda' : 'Safely back in play'}</strong><span>{c.stepsMini}</span></div></div>
         </div>
       </section>
 
