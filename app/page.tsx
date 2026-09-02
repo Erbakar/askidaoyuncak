@@ -8,9 +8,7 @@ import {
   Heart,
   HandHeart,
   Menu,
-  PackageCheck,
   Recycle,
-  Send,
   ShieldCheck,
   Sparkles,
   ToyBrick,
@@ -154,7 +152,6 @@ const copy = {
   },
 } as const;
 
-const stepIcons = [Send, Sparkles, Wrench, PackageCheck];
 const impactIcons = [Recycle, Heart, Wrench];
 
 function BrandMark() {
@@ -256,10 +253,7 @@ export default function Home() {
             </div>
           </div>
           <div className="process-grid" role="list">
-            {c.steps.map((step, index) => {
-              const Icon = stepIcons[index];
-              return <article className="process-card" key={step[0]} role="listitem"><span className="step-number">{step[0]}</span><div className="step-copy"><h3>{step[1]}</h3><p>{step[2]}</p></div><span className="step-icon"><Icon aria-hidden="true" /></span></article>;
-            })}
+            {c.steps.map((step) => <article className="process-card" key={step[0]} role="listitem"><h3>{step[1]}</h3><p>{step[2]}</p></article>)}
           </div>
         </div>
       </section>
