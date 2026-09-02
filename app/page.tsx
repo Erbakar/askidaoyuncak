@@ -11,11 +11,9 @@ import {
   Image as ImageIcon,
   Menu,
   MailCheck,
-  Recycle,
   ShieldCheck,
   Sparkles,
   ToyBrick,
-  Wrench,
   X,
 } from 'lucide-react';
 import { FormEvent, useState } from 'react';
@@ -57,6 +55,8 @@ const copy = {
     principles: ['Çocuk güvenliği önce gelir', 'Her oyuncak tek tek kontrol edilir', 'Uygun olmayan ürünler dağıtıma çıkmaz'],
     impactEyebrow: 'Birlikte yarattığımız etki',
     impactTitle: 'Daha az atık. Daha çok oyun. Daha güçlü bağlar.',
+    impactIntro: 'Bir oyuncağın yeniden kullanılması yalnızca bir eşyayı kurtarmaz. Çevresel, sosyal ve kültürel etkisi aynı anda büyür.',
+    impactAxes: ['Oyuncak', 'Çocuk', 'Toplum'],
     impactCards: [
       ['Oyuncaklara ikinci hayat', 'Kullanılabilir ürünlerin ömrünü uzatır, gereksiz atığı azaltır.'],
       ['Çocuklara oyun hakkı', 'Nitelikli oyuncağa erişimi dayanışmayla kolaylaştırır.'],
@@ -133,6 +133,8 @@ const copy = {
     principles: ['Child safety comes first', 'Every toy is checked individually', 'Unsuitable items are never distributed'],
     impactEyebrow: 'The impact we create together',
     impactTitle: 'Less waste. More play. Stronger bonds.',
+    impactIntro: 'Reusing a toy does more than save an object. It creates environmental, social, and cultural value at the same time.',
+    impactAxes: ['Toy', 'Child', 'Community'],
     impactCards: [
       ['A second life for toys', 'Extends the life of usable products and reduces avoidable waste.'],
       ['The right to play', 'Makes access to quality toys easier through solidarity.'],
@@ -178,8 +180,6 @@ const copy = {
     domain: 'ProvisionalToys.org',
   },
 } as const;
-
-const impactIcons = [Recycle, Heart, Wrench];
 
 function BrandMark() {
   return (
@@ -291,9 +291,12 @@ export default function Home() {
       </section>
 
       <section className="impact-section section-pad" id="etki">
-        <div className="section-heading"><p className="eyebrow"><span /> {c.impactEyebrow}</p><h2>{c.impactTitle}</h2></div>
+        <div className="impact-top">
+          <div className="section-heading"><p className="eyebrow"><span /> {c.impactEyebrow}</p><h2>{c.impactTitle}</h2></div>
+          <p className="impact-intro">{c.impactIntro}</p>
+        </div>
         <div className="impact-grid">
-          {c.impactCards.map((card, index) => { const Icon = impactIcons[index]; return <article key={card[0]}><Icon aria-hidden="true" /><h3>{card[0]}</h3><p>{card[1]}</p></article>; })}
+          {c.impactCards.map((card, index) => <article key={card[0]}><span className="impact-axis">{c.impactAxes[index]}</span><h3>{card[0]}</h3><p>{card[1]}</p></article>)}
         </div>
         <div className="standards-card"><div className="standards-icon"><ShieldCheck aria-hidden="true" /></div><div><h3>{c.standardsTitle}</h3><p>{c.standardsText}</p></div><a href="#sss">{c.standardsLink} <ArrowRight /></a></div>
       </section>
