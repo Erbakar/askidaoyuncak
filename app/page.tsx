@@ -244,12 +244,23 @@ export default function Home() {
       <section className="belief-band"><Sparkles aria-hidden="true" /><p>{c.belief}</p><Sparkles aria-hidden="true" /></section>
 
       <section className="process-section section-pad" id="nasil-calisir">
-        <div className="section-heading centered"><p className="eyebrow"><span /> {c.processEyebrow}</p><h2>{c.processTitle}</h2><p>{c.processText}</p></div>
-        <div className="process-grid">
-          {c.steps.map((step, index) => {
-            const Icon = stepIcons[index];
-            return <article className="process-card" key={step[0]}><div className="step-top"><span>{step[0]}</span><Icon aria-hidden="true" /></div><h3>{step[1]}</h3><p>{step[2]}</p></article>;
-          })}
+        <div className="process-layout">
+          <div className="process-intro">
+            <div className="section-heading"><p className="eyebrow"><span /> {c.processEyebrow}</p><h2>{c.processTitle}</h2><p>{c.processText}</p></div>
+            <div className="process-commitment">
+              <ShieldCheck aria-hidden="true" />
+              <div>
+                <strong>{tr ? 'Her adım kayıtlı ve kontrollü' : 'Every step is documented and controlled'}</strong>
+                <p>{tr ? 'Oyuncaklar kabulden teslimata kadar aynı güvenlik standardıyla değerlendirilir.' : 'Toys are assessed to the same safety standard from acceptance to delivery.'}</p>
+              </div>
+            </div>
+          </div>
+          <div className="process-grid" role="list">
+            {c.steps.map((step, index) => {
+              const Icon = stepIcons[index];
+              return <article className="process-card" key={step[0]} role="listitem"><span className="step-number">{step[0]}</span><div className="step-copy"><h3>{step[1]}</h3><p>{step[2]}</p></div><span className="step-icon"><Icon aria-hidden="true" /></span></article>;
+            })}
+          </div>
         </div>
       </section>
 
