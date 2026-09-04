@@ -125,8 +125,8 @@ const copy = {
   },
   en: {
     notice: 'Kindness grows when shared, and toys return to play.',
-    brand: 'provisional toys',
-    seoTitle: 'Provisional Toys | A second life for every toy',
+    brand: 'preloved toys',
+    seoTitle: 'Preloved Toys | A second life for every toy',
     seoDescription: 'We renew unused toys with care and deliver them to children who need them.',
     nav: ['How it works', 'Our story', 'Impact'],
     send: 'Send a toy',
@@ -155,7 +155,7 @@ const copy = {
     storyArtWord: 'share',
     storyArtSteps: 'Inspect  ·  Clean  ·  Repair  ·  Deliver',
     storyTitle: 'We reduce excess and multiply joy.',
-    storyText1: 'Provisional Toys builds a safe, transparent bridge between toys forgotten at home and children waiting for new ways to play.',
+    storyText1: 'Preloved Toys builds a safe, transparent bridge between toys forgotten at home and children waiting for new ways to play.',
     storyText2: 'Our aim is not only to pass toys on, but to grow a culture of sharing, repair, and equal opportunity for children.',
     principles: ['Child safety comes first', 'Every toy is checked individually', 'Unsuitable items are never distributed'],
     impactEyebrow: 'The impact we create together',
@@ -219,7 +219,7 @@ const copy = {
     ],
     legalAria: 'Legal pages',
     privacyLink: 'Read the privacy notice.',
-    domain: 'ProvisionalToys.org',
+    domain: 'prelovedtoys.org',
   },
 } as const;
 

@@ -39,7 +39,7 @@ const shared = {
     footer: 'Askıda Oyuncak · Sosyal sorumluluk projesi',
   },
   en: {
-    brand: 'provisional toys',
+    brand: 'preloved toys',
     tagline: 'A second life for every toy',
     eyebrow: 'Legal information',
     back: 'Back to the home page',
@@ -47,7 +47,7 @@ const shared = {
     updated: 'Last updated: 4 September 2026',
     prepNote: 'Pre-publication note: The legal name, address, and request email of the entity operating the project must be added when confirmed, and these texts should receive a final review by qualified legal counsel.',
     nav: { privacy: 'Privacy Notice', terms: 'Terms of Use', cookies: 'Cookie Policy' },
-    footer: 'Provisional Toys · Social responsibility project',
+    footer: 'Preloved Toys · Social responsibility project',
   },
 } as const;
 
@@ -122,7 +122,7 @@ const documents: Record<LegalLanguage, Record<LegalDocumentType, { title: string
       title: 'Privacy and Data Protection Notice',
       summary: 'Explains what information we use during the donation process, why we use it, who may receive it, and your rights.',
       sections: [
-        { title: 'Data controller', paragraphs: ['For this notice, the data controller is the legal entity operating the Provisional Toys social responsibility project. Its confirmed legal name and contact details will be added before public launch.'] },
+        { title: 'Data controller', paragraphs: ['For this notice, the data controller is the legal entity operating the Preloved Toys social responsibility project. Its confirmed legal name and contact details will be added before public launch.'] },
         { title: 'Information we process', bullets: ['Full name', 'City', 'Email address or telephone number', 'Information you provide about the type, quantity, and condition of donated toys', 'Delivery records and photographs that institutions are authorised to share'] },
         { title: 'Why we use it', bullets: ['Receive your donation request and contact you', 'Coordinate acceptance, cleaning, repair, matching, and delivery', 'Send the donor the delivery photograph and institution details', 'Publish authorised impact stories while protecting children’s privacy', 'Maintain security, prevent misuse, and meet legal obligations'] },
         { title: 'Legal grounds', paragraphs: ['We process personal data where necessary to fulfil your request, comply with law, safely pursue the project’s legitimate activities, and—where required—based on your explicit consent. The duty to provide information applies independently of consent.'], source: { label: 'Official KVKK information-duty guidance', href: 'https://www.kvkk.gov.tr/Icerik/2033/Aydinlatma-Yukumlulugu-' } },
@@ -134,9 +134,9 @@ const documents: Record<LegalLanguage, Record<LegalDocumentType, { title: string
     },
     terms: {
       title: 'Terms of Use',
-      summary: 'Sets out the basic rules for using the website, donation request form, and Provisional Toys services.',
+      summary: 'Sets out the basic rules for using the website, donation request form, and Preloved Toys services.',
       sections: [
-        { title: 'Scope', paragraphs: ['This site provides information about Provisional Toys, receives toy-donation requests, and shares the project’s impact. By using the site, you agree to these terms.'] },
+        { title: 'Scope', paragraphs: ['This site provides information about Preloved Toys, receives toy-donation requests, and shares the project’s impact. By using the site, you agree to these terms.'] },
         { title: 'Donation conditions', bullets: ['The donor confirms that they are entitled to donate the toys.', 'Broken, sharp, incomplete, unhygienic, or otherwise unsafe toys may be refused.', 'Accepted toys are inspected, cleaned, repaired when appropriate, and matched with a recipient.', 'The receiving institution or beneficiary group is selected according to safety, need, and operational suitability.'] },
         { title: 'No commercial exchange', paragraphs: ['No payment, tax benefit, or guarantee of delivery to a named individual is provided in exchange for a donation. Any transport or handover conditions will be communicated separately.'] },
         { title: 'Delivery records', paragraphs: ['Delivery photographs received from institutions may be shared with the donor. Only authorised content that protects children’s privacy is published on the website. Content marked as a demo is not an actual delivery record.'] },
