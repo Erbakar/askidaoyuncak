@@ -53,9 +53,9 @@ const copy = {
       ['05', 'Belgele', 'Teslim alan kurumdan gelen fotoğrafı ve kurum bilgisini bağışçıyla paylaşalım.'],
     ],
     storyEyebrow: 'Bir sosyal sorumluluk projesi',
-    storyArtLabel: 'GÜVENLİ DÖNÜŞÜM',
-    storyArtWord: 'paylaş',
+    storyArtLabel: 'ATMA, PAYLAŞ',
     storyArtSteps: 'Kontrol  ·  Hijyen  ·  Onarım  ·  Teslimat',
+    storyManifesto: 'Bir oyuncağın hikâyesi bittiğinde çöpe gitmek zorunda değil. Biraz bakım, biraz emek ve çokça sevgiyle yeniden başlayabilir.',
     storyTitle: 'Fazlalığı azaltırken mutluluğu çoğaltıyoruz.',
     storyText1: 'Askıda Oyuncak, evlerde unutulan oyuncaklarla yeni oyunlara ihtiyaç duyan çocuklar arasında güvenli ve şeffaf bir köprü kurar.',
     storyText2: 'Amacımız yalnızca oyuncak aktarmak değil; paylaşma kültürünü, onarım alışkanlığını ve çocuklar için fırsat eşitliğini birlikte büyütmek.',
@@ -151,9 +151,9 @@ const copy = {
       ['05', 'Document', 'We share the receiving institution’s photo and delivery information with the donor.'],
     ],
     storyEyebrow: 'A social responsibility project',
-    storyArtLabel: 'SAFE RENEWAL',
-    storyArtWord: 'share',
+    storyArtLabel: 'DON’T DISCARD. PASS IT ON.',
     storyArtSteps: 'Inspect  ·  Clean  ·  Repair  ·  Deliver',
+    storyManifesto: 'When one chapter of a toy’s story ends, it does not have to become waste. With care, craft, and kindness, it can begin again.',
     storyTitle: 'We reduce excess and multiply joy.',
     storyText1: 'Preloved Toys builds a safe, transparent bridge between toys forgotten at home and children waiting for new ways to play.',
     storyText2: 'Our aim is not only to pass toys on, but to grow a culture of sharing, repair, and equal opportunity for children.',
@@ -345,7 +345,10 @@ export default function Home() {
       </section>
 
       <section className="story-section section-pad" id="hikayemiz">
-        <div className="story-art" data-label={c.storyArtLabel} data-steps={c.storyArtSteps} aria-hidden="true"><div className="story-circle"><Heart /><span>{c.storyArtWord}</span></div><div className="orbit orbit-one" /><div className="orbit orbit-two" /></div>
+        <blockquote className="story-manifesto">
+          <p>{c.storyManifesto}</p>
+          <footer><strong>{c.storyArtLabel}</strong><span>{c.storyArtSteps}</span></footer>
+        </blockquote>
         <div className="story-copy"><p className="eyebrow light"><span /> {c.storyEyebrow}</p><h2>{c.storyTitle}</h2><p>{c.storyText1}</p><p>{c.storyText2}</p><ul>{c.principles.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul></div>
       </section>
 
