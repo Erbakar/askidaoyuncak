@@ -18,7 +18,7 @@ import {
   ToyBrick,
   X,
 } from 'lucide-react';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -28,6 +28,8 @@ const copy = {
   tr: {
     notice: 'İyilik paylaşınca çoğalır, oyuncaklar yeniden oyuna döner.',
     brand: 'askıda oyuncak',
+    seoTitle: 'Askıda Oyuncak | Oyuncaklara ikinci hayat',
+    seoDescription: 'Kullanılmayan oyuncakları güvenle yeniliyor ve ihtiyaç sahibi çocuklarla buluşturuyoruz.',
     nav: ['Nasıl çalışır?', 'Hikâyemiz', 'Etki'],
     send: 'Oyuncak gönder',
     eyebrow: 'Sevgiyle yenilenen oyuncaklar',
@@ -42,7 +44,7 @@ const copy = {
     belief: 'Çünkü bir çocuğun büyüdüğü oyuncak, başka bir çocuğun hayaline dönüşebilir.',
     processEyebrow: 'İyilik, özen ister',
     processTitle: 'Bir oyuncak bize geldiğinde ne olur?',
-    processText: 'Bağışlanan her oyuncağı yeni sahibine güvenle ulaşana kadar dört adımda özenle hazırlıyoruz.',
+    processText: 'Bağışlanan her oyuncağı yeni sahibine güvenle ulaşana kadar beş adımda özenle hazırlıyoruz.',
     steps: [
       ['01', 'Gönder', 'Kullanmadığınız, paylaşmaya uygun oyuncağı bize ulaştırın.'],
       ['02', 'Temizle', 'Her oyuncağı malzemesine uygun şekilde dezenfekte edelim.'],
@@ -51,6 +53,9 @@ const copy = {
       ['05', 'Belgele', 'Teslim alan kurumdan gelen fotoğrafı ve kurum bilgisini bağışçıyla paylaşalım.'],
     ],
     storyEyebrow: 'Bir sosyal sorumluluk projesi',
+    storyArtLabel: 'GÜVENLİ DÖNÜŞÜM',
+    storyArtWord: 'paylaş',
+    storyArtSteps: 'Kontrol  ·  Hijyen  ·  Onarım  ·  Teslimat',
     storyTitle: 'Fazlalığı azaltırken mutluluğu çoğaltıyoruz.',
     storyText1: 'Askıda Oyuncak, evlerde unutulan oyuncaklarla yeni oyunlara ihtiyaç duyan çocuklar arasında güvenli ve şeffaf bir köprü kurar.',
     storyText2: 'Amacımız yalnızca oyuncak aktarmak değil; paylaşma kültürünü, onarım alışkanlığını ve çocuklar için fırsat eşitliğini birlikte büyütmek.',
@@ -108,11 +113,21 @@ const copy = {
     ],
     footerText: 'Her çocuğun oyun hakkına, her oyuncağın ikinci bir hikâyeye sahip olduğuna inanıyoruz.',
     footerNav: ['Bağış Yap', 'Kabul Kriterleri', 'Kurumsal Destek', 'İletişim'],
+    legalTitle: 'Yasal',
+    legalNav: [
+      ['Gizlilik ve KVKK', '/gizlilik'],
+      ['Kullanım Koşulları', '/kullanim-kosullari'],
+      ['Çerez Politikası', '/cerez-politikasi'],
+    ],
+    legalAria: 'Yasal sayfalar',
+    privacyLink: 'Gizlilik metnini okuyun.',
     domain: 'askidaoyuncak.org',
   },
   en: {
     notice: 'Kindness grows when shared, and toys return to play.',
     brand: 'provisional toys',
+    seoTitle: 'Provisional Toys | A second life for every toy',
+    seoDescription: 'We renew unused toys with care and deliver them to children who need them.',
     nav: ['How it works', 'Our story', 'Impact'],
     send: 'Send a toy',
     eyebrow: 'Toys renewed with love',
@@ -127,7 +142,7 @@ const copy = {
     belief: 'Because a toy one child has grown with can become another child’s dream.',
     processEyebrow: 'Kindness takes care',
     processTitle: 'What happens when a toy reaches us?',
-    processText: 'We prepare every donated toy with care in four steps, until it safely reaches its new owner.',
+    processText: 'We prepare every donated toy with care in five steps, until it safely reaches its new owner.',
     steps: [
       ['01', 'Send', 'Send us an unused toy that is ready to be shared.'],
       ['02', 'Clean', 'We disinfect every toy with a material-safe method.'],
@@ -136,6 +151,9 @@ const copy = {
       ['05', 'Document', 'We share the receiving institution’s photo and delivery information with the donor.'],
     ],
     storyEyebrow: 'A social responsibility project',
+    storyArtLabel: 'SAFE RENEWAL',
+    storyArtWord: 'share',
+    storyArtSteps: 'Inspect  ·  Clean  ·  Repair  ·  Deliver',
     storyTitle: 'We reduce excess and multiply joy.',
     storyText1: 'Provisional Toys builds a safe, transparent bridge between toys forgotten at home and children waiting for new ways to play.',
     storyText2: 'Our aim is not only to pass toys on, but to grow a culture of sharing, repair, and equal opportunity for children.',
@@ -193,6 +211,14 @@ const copy = {
     ],
     footerText: 'We believe every child has the right to play and every toy deserves a second story.',
     footerNav: ['Donate', 'Acceptance Criteria', 'Partner With Us', 'Contact'],
+    legalTitle: 'Legal',
+    legalNav: [
+      ['Privacy Notice', '/privacy'],
+      ['Terms of Use', '/terms'],
+      ['Cookie Policy', '/cookie-policy'],
+    ],
+    legalAria: 'Legal pages',
+    privacyLink: 'Read the privacy notice.',
     domain: 'ProvisionalToys.org',
   },
 } as const;
@@ -212,6 +238,29 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const c = copy[language];
   const tr = language === 'tr';
+
+  useEffect(() => {
+    const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+    if (requestedLanguage === 'en') setLanguage('en');
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.title = c.seoTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', c.seoDescription);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', c.seoTitle);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', c.seoDescription);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', c.seoTitle);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', c.seoDescription);
+  }, [c, language]);
+
+  function changeLanguage(nextLanguage: 'tr' | 'en') {
+    setLanguage(nextLanguage);
+    const url = new URL(window.location.href);
+    if (nextLanguage === 'en') url.searchParams.set('lang', 'en');
+    else url.searchParams.delete('lang');
+    window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+  }
 
   function submitForm(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -239,8 +288,8 @@ export default function Home() {
 
         <div className="header-actions">
           <div className="language-switch" aria-label={tr ? 'Dil seçimi' : 'Language selection'}>
-            <button className={tr ? 'active' : ''} onClick={() => setLanguage('tr')} aria-pressed={tr}>TR</button>
-            <button className={!tr ? 'active' : ''} onClick={() => setLanguage('en')} aria-pressed={!tr}>EN</button>
+            <button className={tr ? 'active' : ''} onClick={() => changeLanguage('tr')} aria-pressed={tr}>TR</button>
+            <button className={!tr ? 'active' : ''} onClick={() => changeLanguage('en')} aria-pressed={!tr}>EN</button>
           </div>
           <Button className="donate-button" size="lg" onClick={goToDonation}>{c.send}</Button>
           <button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label={tr ? 'Menüyü aç' : 'Open menu'}>{menuOpen ? <X /> : <Menu />}</button>
@@ -296,7 +345,7 @@ export default function Home() {
       </section>
 
       <section className="story-section section-pad" id="hikayemiz">
-        <div className="story-art" aria-hidden="true"><div className="story-circle"><Heart /><span>paylaş</span></div><div className="orbit orbit-one" /><div className="orbit orbit-two" /></div>
+        <div className="story-art" data-label={c.storyArtLabel} data-steps={c.storyArtSteps} aria-hidden="true"><div className="story-circle"><Heart /><span>{c.storyArtWord}</span></div><div className="orbit orbit-one" /><div className="orbit orbit-two" /></div>
         <div className="story-copy"><p className="eyebrow light"><span /> {c.storyEyebrow}</p><h2>{c.storyTitle}</h2><p>{c.storyText1}</p><p>{c.storyText2}</p><ul>{c.principles.map((item) => <li key={item}><Check aria-hidden="true" />{item}</li>)}</ul></div>
       </section>
 
@@ -351,7 +400,7 @@ export default function Home() {
               <div className="form-row"><label>{c.city}<Input name="city" required autoComplete="address-level2" /></label><label>{c.contact}<Input name="contact" required /></label></div>
               <label>{c.note}<Textarea name="note" required placeholder={c.notePlaceholder} /></label>
               <Button type="submit" className="form-submit">{c.submit} <ArrowRight /></Button>
-              <small>{c.privacy}</small>
+              <small>{c.privacy} <a href={c.legalNav[0][1]}>{c.privacyLink}</a></small>
             </form>
           )}
         </div>
@@ -366,7 +415,8 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="footer-brand"><a className="brand" href="#top"><BrandMark /><span className="brand-lockup"><span className="brand-name">{c.brand}</span><small>{tr ? 'Oyuncağa ikinci bir hayat' : 'A second life for every toy'}</small></span></a><p>{c.footerText}</p></div>
-        <nav aria-label={tr ? 'Alt menü' : 'Footer navigation'}>{c.footerNav.map((item, index) => <a key={item} href={index === 0 ? '#bagis' : index === 1 ? '#sss' : '#hikayemiz'}>{item}</a>)}</nav>
+        <nav className="footer-primary-nav" aria-label={tr ? 'Alt menü' : 'Footer navigation'}>{c.footerNav.map((item, index) => <a key={item} href={index === 0 ? '#bagis' : index === 1 ? '#sss' : '#hikayemiz'}>{item}</a>)}</nav>
+        <nav className="footer-legal-nav" aria-label={c.legalAria}><strong>{c.legalTitle}</strong>{c.legalNav.map((item) => <a key={item[0]} href={item[1]}>{item[0]}</a>)}</nav>
         <div className="footer-meta"><span>{c.domain}</span><span>© 2026</span></div>
       </footer>
     </main>
