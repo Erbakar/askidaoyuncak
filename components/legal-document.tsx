@@ -175,7 +175,7 @@ export function LegalDocument({ language, type }: { language: LegalLanguage; typ
   const homeHref = language === 'tr' ? '/' : '/?lang=en';
 
   useEffect(() => {
-    document.documentElement.lang = language;
+    if (typeof document !== 'undefined' && document.documentElement) document.documentElement.lang = language;
   }, [language]);
 
   return (

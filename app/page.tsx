@@ -245,7 +245,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    document.documentElement.lang = language;
+    if (typeof document !== 'undefined' && document.documentElement) document.documentElement.lang = language;
     document.title = c.seoTitle;
     document.querySelector('meta[name="description"]')?.setAttribute('content', c.seoDescription);
     document.querySelector('meta[property="og:title"]')?.setAttribute('content', c.seoTitle);
